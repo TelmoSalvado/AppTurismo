@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "288912401718",
+    "project_id": "appturismo-24ad2",
+    "storage_bucket": "appturismo-24ad2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288912401718:android:2b65db53da4d1102a33f97",
+        "android_client_info": {
+          "package_name": "com.example.turistapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288912401718-ovorj83kil5reid53srugehjbvmt4pab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAf5-SkorgTX9GbQno49jBqVmv1DmNU1nM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288912401718-ovorj83kil5reid53srugehjbvmt4pab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
