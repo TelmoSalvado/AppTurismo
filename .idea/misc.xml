@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/drawable/button_shape.xml" value="0.1505" />
         <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2075" />
         <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/activity_menu.xml" value="0.1" />
         <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/activity_paginaincial.xml" value="0.1859375" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/activity_perfil.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/activity_perfil2.xml" value="0.1933876811594203" />
         <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/activity_regist.xml" value="0.2" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/app_bar_main.xml" value="0.3957367933271548" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/layout/perfilitem.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/telmo/AndroidStudioProjects/Turistapp/app/src/main/res/menu/main.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -82,7 +82,7 @@ public class RegistActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Log.d(TAG,"user created for" + userId);
-                                    Intent intent = new Intent(RegistActivity.this, Paginaincial.class);
+                                    Intent intent = new Intent(RegistActivity.this, Menu.class);
                                     startActivity(intent);
                                 }
                             });

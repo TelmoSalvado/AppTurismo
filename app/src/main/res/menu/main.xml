@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="Definições"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_perfil"
+        android:title="com.example.turistapp.Perfil" />
+    <item
+        android:id="@+id/action_sair"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:title="Sair"
+        app:showAsAction="ifRoom" />
+</menu>
