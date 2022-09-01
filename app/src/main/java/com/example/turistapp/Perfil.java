@@ -2,20 +2,12 @@ package com.example.turistapp;
 
 public class Perfil {
 
-    private String Email;
-    private String Name;
-    private String Localidade;
-    private String CPostal;
-    private String contribuinte;
-    private String mTelfone;
-    private String data;
-
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getName() {
@@ -43,28 +35,40 @@ public class Perfil {
     }
 
     public String getContribuinte() {
-        return contribuinte;
+        return Contribuinte;
     }
 
     public void setContribuinte(String contribuinte) {
-        this.contribuinte = contribuinte;
+        Contribuinte = contribuinte;
     }
 
-    public String getmTelfone() {
-        return mTelfone;
+    public String getTelefone() {
+        return Telefone;
     }
 
-    public void setmTelfone(String mTelfone) {
-        this.mTelfone = mTelfone;
+    public void setTelefone(String telefone) {
+        Telefone = telefone;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return Date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String date) {
+        Date = date;
     }
+
+
+
+
+    private String email;
+    private String Name;
+    private String Localidade;
+    private String CPostal;
+    private String Contribuinte;
+    private String Telefone;
+    private String Date;
+
 
 
 

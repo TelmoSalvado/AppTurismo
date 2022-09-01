@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.proto.TargetGlobal;
@@ -32,6 +34,7 @@ public class RegistActivity extends AppCompatActivity {
     Button registar;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
+    FirebaseDatabase firebaseDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,7 @@ public class RegistActivity extends AppCompatActivity {
         password = findViewById(R.id.editTextPassword);
         registar = findViewById(R.id.buttonRegistar);
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
         registar.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -67,9 +70,11 @@ public class RegistActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             Toast.makeText(RegistActivity.this, "User Created", Toast.LENGTH_SHORT).show();
                             userId = firebaseAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = firebaseFirestore.collection("users").document(userId);
+                            DatabaseReference databaseReference = firebaseDatabase.getReference("users").child(userId);
 
-                            Map<String, Object> user  = new HashMap<>();
+                            HashMap<String, String> map = new HashMap<>();
+
+                            Map<String, String> user  = new HashMap<>();
                             user.put("Name", mName);
                             user.put("Date", mdata);
                             user.put("Local", mLocalidade);
@@ -78,15 +83,10 @@ public class RegistActivity extends AppCompatActivity {
                             user.put("Telefone", mTelfone);
                             user.put("email", mEmail);
                             user.put("password",mPassword);
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Log.d(TAG,"user created for" + userId);
-                                    Intent intent = new Intent(RegistActivity.this, Menu.class);
-                                    startActivity(intent);
-                                }
-                            });
 
+                            databaseReference.setValue(user);
+                            Intent intent = new Intent(RegistActivity.this, Menu.class);
+                            startActivity(intent);
 
                         }else{
                             Toast.makeText(RegistActivity.this, "User not Created", Toast.LENGTH_SHORT).show();

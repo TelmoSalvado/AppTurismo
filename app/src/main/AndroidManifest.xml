@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.turistapp">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.p☺ermission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Turistapp"
         tools:targetApi="31">
+        <activity
+            android:name=".UpdatePerfil"
+            android:exported="false" />
         <activity
             android:name=".Menu"
             android:exported="false" />

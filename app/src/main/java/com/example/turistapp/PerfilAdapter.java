@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,20 +26,26 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.MyViewHold
     @Override
     public PerfilAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.perfilitem,parent,false);
-        return new MyViewHolder(v);
+        MyViewHolder myViewHolder = new MyViewHolder(v);
+
+        return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull PerfilAdapter.MyViewHolder holder, int position) {
 
+        MyViewHolder myViewHolder= (MyViewHolder)holder;
+
         Perfil perfil = list.get(position);
         holder.name.setText(perfil.getName());
-        holder.datadenascimento.setText(perfil.getData());
+        holder.datadenascimento.setText(perfil.getDate());
         holder.localidade.setText(perfil.getLocalidade());
-        holder.telefone.setText(perfil.getmTelfone());
+        holder.telefone.setText(perfil.getTelefone());
         holder.codigopostal.setText(perfil.getCPostal());
         holder.contribuinte.setText(perfil.getContribuinte());
         holder.email.setText(perfil.getEmail());
+
+
 
     }
 
@@ -48,17 +55,21 @@ public class PerfilAdapter extends RecyclerView.Adapter<PerfilAdapter.MyViewHold
     }
 
     public  static  class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name, datadenascimento, localidade, codigopostal, telefone, contribuinte, email;
+        TextView name, datadenascimento, localidade, codigopostal, telefone, contribuinte, email, password;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name =itemView.findViewById(R.id.item_nome);
+            name =itemView.findViewById(R.id.textView3);
             datadenascimento =itemView.findViewById(R.id.item_data);
             localidade =itemView.findViewById(R.id.item_localidade);
             codigopostal =itemView.findViewById(R.id.item_CPostal);
             telefone =itemView.findViewById(R.id.item_telefone);
             contribuinte =itemView.findViewById(R.id.item_contribuinte);
             email =itemView.findViewById(R.id.item_email);
+            password = itemView.findViewById(R.id.item_password);
+
+
+
         }
     }
 
