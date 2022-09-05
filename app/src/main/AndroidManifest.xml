@@ -17,6 +17,10 @@
         android:theme="@style/Theme.Turistapp"
         tools:targetApi="31">
         <activity
+            android:name=".FragmentInitial"
+            android:exported="false"
+            android:label="@string/title_activity_fragment_initial" />
+        <activity
             android:name=".UpdatePerfil"
             android:exported="false" />
         <activity
@@ -25,10 +29,6 @@
         <activity
             android:name=".Perfil_Activity"
             android:exported="false" />
-        <activity
-            android:name=".Paginaincial"
-            android:exported="false"
-            android:label="@string/title_activity_paginaincial" />
         <activity
             android:name=".RegistActivity"
             android:exported="false" />

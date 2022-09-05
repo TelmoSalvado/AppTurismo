@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(MainActivity.this, "User Auth sucess", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(MainActivity.this, Menu.class);
+                            Intent intent = new Intent(MainActivity.this, FragmentInitial.class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(MainActivity.this, "User Auth fail", Toast.LENGTH_SHORT).show();

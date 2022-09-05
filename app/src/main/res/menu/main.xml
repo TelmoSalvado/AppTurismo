@@ -8,7 +8,9 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_perfil"
-        android:title="com.example.turistapp.Perfil" />
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Perfil"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_sair"
         android:icon="@android:drawable/ic_lock_power_off"
