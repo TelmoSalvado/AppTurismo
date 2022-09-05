@@ -18,20 +18,20 @@ public class Perfil {
         Name = name;
     }
 
-    public String getLocalidade() {
-        return Localidade;
+    public String getLocal() {
+        return Local;
     }
 
-    public void setLocalidade(String localidade) {
-        Localidade = localidade;
+    public void setLocal(String localidade) {
+        Local = localidade;
     }
 
-    public String getCPostal() {
-        return CPostal;
+    public String getCpostal() {
+        return Cpostal;
     }
 
-    public void setCPostal(String CPostal) {
-        this.CPostal = CPostal;
+    public void setCpostal(String CPostal) {
+        this.Cpostal = CPostal;
     }
 
     public String getContribuinte() {
@@ -63,8 +63,8 @@ public class Perfil {
 
     private String email;
     private String Name;
-    private String Localidade;
-    private String CPostal;
+    private String Local;
+    private String Cpostal;
     private String Contribuinte;
     private String Telefone;
     private String Date;

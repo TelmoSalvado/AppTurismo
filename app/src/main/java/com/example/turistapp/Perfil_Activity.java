@@ -77,7 +77,14 @@ public class Perfil_Activity extends AppCompatActivity {
 
                 }
                 perfilAdapter.notifyDataSetChanged();
-            
+                /*atualizar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        ShowDialog(user);
+                    }
+
+                });*/
             }
 
             @Override
