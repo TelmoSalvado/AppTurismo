@@ -34,33 +34,11 @@ public class DashboardFragment extends Fragment {
 
         final TextView textView = binding.textDashboard;
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        firebaseAuth = FirebaseAuth.getInstance();
-        setHasOptionsMenu(true);
         return root;
     }
 
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.main, menu);
 
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        if(id == R.id.action_perfil){
-            Intent intent = new Intent(getContext(), Perfil_Activity.class);
-            startActivity(intent);
-        }else if(id == R.id.action_sair){
-            firebaseAuth.signOut();
-            Intent intent = new Intent(getContext(), MainActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
