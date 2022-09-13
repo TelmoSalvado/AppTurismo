@@ -19,10 +19,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.HashMap;
 
 public class CriarAnuncio extends AppCompatActivity {
 
@@ -34,6 +38,7 @@ public class CriarAnuncio extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
+    FirebaseDatabase firebaseDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +64,10 @@ public class CriarAnuncio extends AppCompatActivity {
         save= findViewById(R.id.buttonCriar);
         cancelar = findViewById(R.id.buttonCancelar1);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +75,68 @@ public class CriarAnuncio extends AppCompatActivity {
             }
         });
         setContentView(R.layout.activity_criar_anuncio);
+        save.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String mtitulo = titulo.getText().toString().trim();
+            String mlocalidade = localidade.getText().toString().trim();
+            String minformacao = informacao.getText().toString().trim();
+            String mdatadeentrada = datadeentrada.getText().toString().trim();
+            String mpreco = preco.getText().toString().trim();
+            String mnrpessoas = nrpessoas.getText().toString().trim();
+            String mwifi, manimais, mac,mvista, mfumadores;
+
+            if(wifi.isChecked()){
+                mwifi = "sim";
+            }else{
+                mwifi = "não";
+            }
+
+            if(animais.isChecked()){
+                manimais = "sim";
+            }else{
+                manimais = "não";
+            }
+
+            if(ac.isChecked()){
+                mac = "sim";
+            }else{
+                mac = "não";
+            }
+            if(vista.isChecked()){
+                mvista = "sim";
+            }else{
+                mvista = "não";
+            }
+
+            if(fumadores.isChecked()){
+                mfumadores = "sim";
+            }else{
+                mfumadores = "não";
+            }
+
+            String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            DatabaseReference reference = firebaseDatabase.getReference("anuncio").child(user);
+
+            HashMap<String, String> anuncios = new HashMap<>();
+            anuncios.put("Titulo", mtitulo);
+            anuncios.put("Localidade", mlocalidade);
+            anuncios.put("Informacao", minformacao);
+            anuncios.put("DatadeEntrada", mdatadeentrada);
+            anuncios.put("Preco", mpreco);
+            anuncios.put("NrPessoas", mnrpessoas);
+            anuncios.put("Wifi", mwifi);
+            anuncios.put("Animais",manimais);
+            anuncios.put("Vista", mvista);
+            anuncios.put("AC", mac);
+            anuncios.put("Fumadores", mfumadores);
+            uploadPic(mlocalidade);
+            reference.setValue(anuncios);
+
+        }
+    });
+
     }
 
     private void choosePic(){
@@ -81,22 +152,22 @@ public class CriarAnuncio extends AppCompatActivity {
         if(requestCode ==1 && resultCode == RESULT_OK && data != null){
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
-            uploadPic();
+
         }
 
     }
 
-    private void uploadPic() {
+    private void uploadPic(String localidade) {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image...");
         pd.show();
         String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        StorageReference reference = storageReference.child("images/" + user);
+        StorageReference reference = storageReference.child("images/"+ localidade + "/" + user);
         reference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 pd.dismiss();
-                Snackbar.make(findViewById(androidx.appcompat.R.id.content), "Image Uploaded", Snackbar.LENGTH_SHORT).show();
+                //Snackbar.make(findViewById(androidx.appcompat.R.id.content), "Image Uploaded", Snackbar.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
