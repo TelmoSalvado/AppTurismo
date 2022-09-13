@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.turistapp.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,8 +34,9 @@ public class CriarAnuncio extends AppCompatActivity {
     EditText titulo, localidade, informacao, datadeentrada, preco, nrpessoas;
     CheckBox wifi, animais, ac, varanda, fumadores, vista;
     ImageView imageView;
-    Button save, cancelar;
+    Button save, cancelar, adicionarimg;
     Uri imageUri;
+    ActivityMainBinding binding;
     private FirebaseAuth firebaseAuth;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
@@ -42,10 +44,10 @@ public class CriarAnuncio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_criar_anuncio);
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
-
+    binding = ActivityMainBinding.inflate(getLayoutInflater());
         titulo = findViewById(R.id.editTextTItulo);
         localidade = findViewById(R.id.editTextLocalidade);
         informacao = findViewById(R.id.editTextInformações);
@@ -60,21 +62,21 @@ public class CriarAnuncio extends AppCompatActivity {
         vista = findViewById(R.id.checkBoxVista);
         fumadores = findViewById(R.id.checkBoxFumadores);
         imageView = findViewById(R.id.imageView);
-
-        save= findViewById(R.id.buttonCriar);
+        adicionarimg = findViewById(R.id.buttonaddImage);
+        save= findViewById(R.id.buttonSubmit);
         cancelar = findViewById(R.id.buttonCancelar1);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-
-        imageView.setOnClickListener(new View.OnClickListener() {
+        adicionarimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 choosePic();
             }
         });
-        setContentView(R.layout.activity_criar_anuncio);
+
+
         save.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {

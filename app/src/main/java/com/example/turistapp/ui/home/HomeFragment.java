@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.turistapp.CriarAnuncio;
 import com.example.turistapp.MainActivity;
 import com.example.turistapp.Perfil_Activity;
 import com.example.turistapp.R;
@@ -25,7 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private @NonNull FragmentHomeBinding binding;
-
+    Button buttonCriar;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -34,6 +36,15 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         ConstraintLayout root = binding.getRoot();
 
+        buttonCriar = root.findViewById(R.id.buttonCriar);
+
+        buttonCriar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CriarAnuncio.class);
+                startActivity(intent);
+            }
+        });
 
 
         firebaseAuth = FirebaseAuth.getInstance();

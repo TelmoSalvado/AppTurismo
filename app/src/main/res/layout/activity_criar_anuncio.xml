@@ -34,6 +34,12 @@
                 android:layout_height="wrap_content"
                 tools:srcCompat="@tools:sample/avatars" />
 
+            <Button
+                android:id="@+id/buttonaddImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AdicionarImagem" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
