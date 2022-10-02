@@ -1,13 +1,19 @@
 package com.example.turistapp;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -73,6 +79,7 @@ public class CriarAnuncio extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 choosePic();
+
             }
         });
 
@@ -145,17 +152,22 @@ public class CriarAnuncio extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("images/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 1);
+        someActivity.launch(intent);
     }
-
+ActivityResultLauncher<Intent> someActivity = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode ==1 && resultCode == RESULT_OK && data != null){
-            imageUri = data.getData();
+    public void onActivityResult(ActivityResult result) {
+        if(result.getResultCode() == Activity.RESULT_OK && result.getData() != null){
+            imageUri = result.getData().getData();
             imageView.setImageURI(imageUri);
 
         }
+    }
+});
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
 
     }
 
